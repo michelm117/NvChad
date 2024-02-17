@@ -1,15 +1,18 @@
 local plugins = {
+  {
+    "github/copilot.vim",
+    event = { "InsertEnter", "CmdLineEnter" },
+  },
   { "mbbill/undotree",  lazy = false },
+  { "joerdav/templ.vim",  lazy = false },
   { "preservim/tagbar", lazy = false },
   {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
         "gopls",
-        "gofmt",
         "golines",
         "goimports",
-        "goimports_reviser",
       }
     }
   },
@@ -28,20 +31,28 @@ local plugins = {
       require("core.utils").load_mappings("dap")
     end
   },
-  {
-    "dreamsofcode-io/nvim-dap-go",
-    ft = "go",
-    dependencies = "mfussenegger/nvim-dap",
-    config = function(_, opts)
-      require("dap-go").setup(opts)
-      require("core.utils").load_mappings("dap_go")
-    end
-  },
+  -- {
+  --   "dreamsofcode-io/nvim-dap-go",
+  --   ft = "go",
+  --   dependencies = "mfussenegger/nvim-dap",
+  --   config = function(_, opts)
+  --     require("dap-go").setup(opts)
+  --     require("core.utils").load_mappings("dap_go")
+  --   end
+  -- },
   {
     "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        tailwindcss = {},
+      },
+    },
     config = function()
       require "plugins.configs.lspconfig"
-      require "custom.configs.lspconfig"
+      require "custom.configs.lspconfig-go"
+      require "custom.configs.lspconfig-tailwindcss"
+      require "custom.configs.lspconfig-htmx"
+      require "custom.configs.lspconfig-html"
     end,
   },
   {

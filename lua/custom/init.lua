@@ -1,4 +1,3 @@
-
 vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
@@ -30,7 +29,7 @@ vim.opt.relativenumber = true
 
 
 
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 ---- remap ----
@@ -50,11 +49,11 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 -- make file executable
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
-
+--
+vim.filetype.add({ extension = { templ = "templ" } })
 
 -- vscode foo
 if vim.g.vscode then
-    -- https://github.com/vscode-neovim/vscode-neovim/issues/298
-    vim.opt.clipboard:append("unnamedplus")
+  -- https://github.com/vscode-neovim/vscode-neovim/issues/298
+  vim.opt.clipboard:append("unnamedplus")
 end
-
