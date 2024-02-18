@@ -78,5 +78,4 @@ M.gopher = {
   }
 }
 
-
 return M

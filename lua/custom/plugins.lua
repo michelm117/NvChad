@@ -1,11 +1,39 @@
+local overrides = require "custom.configs.overrides"
+
 local plugins = {
+  -- {
+  --   "github/copilot.vim",
+  --   event = { "InsertEnter", "CmdLineEnter" },
+  -- },
   {
-    "github/copilot.vim",
-    event = { "InsertEnter", "CmdLineEnter" },
+    "zbirenbaum/copilot.lua",
+    event = "InsertEnter",
+    opts = overrides.copilot,
   },
-  { "mbbill/undotree",  lazy = false },
-  { "joerdav/templ.vim",  lazy = false },
-  { "preservim/tagbar", lazy = false },
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      {
+        "zbirenbaum/copilot-cmp",
+        config = function()
+          require("copilot_cmp").setup()
+        end,
+      },
+    },
+    opts = {
+      sources = {
+        { name = "nvim_lsp", group_index = 2 },
+        { name = "copilot",  group_index = 2 },
+        { name = "luasnip",  group_index = 2 },
+        { name = "buffer",   group_index = 2 },
+        { name = "nvim_lua", group_index = 2 },
+        { name = "path",     group_index = 2 },
+      },
+    },
+  },
+  { "mbbill/undotree",   lazy = false },
+  { "joerdav/templ.vim", lazy = false },
+  { "preservim/tagbar",  lazy = false },
   {
     "williamboman/mason.nvim",
     opts = {
