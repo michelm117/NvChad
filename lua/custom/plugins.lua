@@ -6,6 +6,14 @@ local plugins = {
   --   event = { "InsertEnter", "CmdLineEnter" },
   -- },
   {
+    "voldikss/vim-floaterm",
+    lazy = false,
+  },
+  {
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
+  },
+  {
     "zbirenbaum/copilot.lua",
     event = "InsertEnter",
     opts = overrides.copilot,

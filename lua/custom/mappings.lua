@@ -2,6 +2,16 @@
 
 local M = {}
 
+M.general = {
+  n = {
+    ["<C-h>"] = { "<cmd> TmuxNavigateLeft<CR>", "window left" },
+    ["<C-l>"] = { "<cmd> TmuxNavigateRight<CR>", "window right" },
+    ["<C-j>"] = { "<cmd> TmuxNavigateDown<CR>", "window down" },
+    ["<C-k>"] = { "<cmd> TmuxNavigateUp<CR>", "window up" },
+  }
+}
+
+
 M.undotree = {
   n = {
     ["<leader>u"] = { "<cmd> UndotreeToggle <CR>", "Togggle undotree" },
@@ -23,10 +33,25 @@ M.nvimtree = {
 
 M.telescope = {
   n = {
+    -- find
+    ["<leader>fw"] = { "<nil>" ,"" },
     ["<leader>fg"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
+
+    -- git
+    ["<leader>cm"] = { "<nil>", "" },
+    ["<leader>gt"] = { "<nil>", "" },
+    ["<leader>gs"] = { "<nil>", "" },
+
   },
 }
 
+M.floaterm = {
+  n = {
+    ["<leader>ft"] = { "<cmd> FloatermNew lazygit<CR>", "Toggle lazygit" },
+    ["<leader>fs"] = { "<cmd> FloatermNew --wintype=split <CR>", "Split terminal" },
+    ["<leader>fv"] = { "<cmd> FloatermNew --wintype=vsplit <CR>", "Vsplit terminal" },
+  }
+}
 
 M.dap = {
   plugin = true,
